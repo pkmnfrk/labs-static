@@ -11,7 +11,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://labs.klick.com/Content/Pulse_1_0_c.ipa</string>
+					<string>https://labs.klick.com/apps/Pulse_1_0_c.ipa</string>
 				</dict>
 				<dict>
 					<key>kind</key>
@@ -19,7 +19,7 @@
 					<key>needs-shine</key>
 					<false/>
 					<key>url</key>
-					<string>https://labs.klick.com/Content/Pulse@2x.png</string>
+					<string>https://labs.klick.com/apps/Pulse@2x.png</string>
 				</dict>
 				<dict>
 					<key>kind</key>
@@ -27,7 +27,7 @@
 					<key>needs-shine</key>
 					<false/>
 					<key>url</key>
-					<string>https://labs.klick.com/Content/Pulse.png</string>
+					<string>https://labs.klick.com/apps/Pulse.png</string>
 				</dict>
 			</array>
 			<key>metadata</key>
