@@ -1,0 +1,35 @@
+body,html {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 16px;
+    text-align: center;
+}
+#apps {
+    margin: 0;
+    padding: 0;
+    border: none;
+    
+}
+#apps li {
+    display:inline-block;
+    width: 60px;
+    margin: 8px;
+    height: 100px;
+    text-align: center;
+    padding: 0;
+    background-color: #ccc;
+}
+
+#apps li img {
+    width: 56px;
+    border-radius: 10px;
+}
