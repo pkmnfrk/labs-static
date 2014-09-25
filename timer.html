@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Timer</h1>
+        <h2 id="timer"></h2>
+        <ul id="timerList">
+        
+        </ul>
+        <input id="item" value="" style="width: 500px" /><br/>
+        <button id="clear" onclick="clear_click(); return false;">Clear</button><button id="next" onclick="next_click(); return false;">Next</button>
+        <script>
+            var data = null;
+            var currentTime = null;
+            var interval = null;
+            
+            clear_click();
+            
+            
+            if(localStorage.getItem("data")) {
+                data = JSON.parse(localStorage.getItem("data"));
+                for(var i = 0; i < data.times.length; i++) {
+                    I("timerList").appendChild(itemToLi(data.times[i]));
+                    if(!currentTime) currentTime = new Date(data.times[i]);
+                    if(!interval) {
+                        interval = setInterval(onTimer, 100);
+                    }
+                }
+            }
+            
+            
+            
+            function onTimer() {
+                var now = new Date();
+                var diff = Math.floor((now - currentTime) / 1000);
+                I("timer").innerHTML = pad(Math.floor(diff / 3600) % 60, 2, '0') + ":" + pad(Math.floor(diff / 60) % 60, 2, '0') + ":" + pad(diff % 60, 2, '0');
+            }
+            
+            function clear_click() {
+                data = {
+                    times: []
+                };
+                I("timerList").innerHTML = "";
+                save();
+                if(interval) {
+                    clearInterval(interval);
+                    interval = null;
+                }
+                
+            }
+            
+            function next_click() {
+                var item = I("item").value;
+                currentTime = new Date();
+                var newItem = {
+                    time: currentTime.getTime(),
+                    label: item
+                };
+                
+                var el = itemToLi(newItem);
+                I("timerList").appendChild(el);
+                
+                I("item").value = "";
+                
+                data.times.push(newItem);
+                
+                save();
+                
+                if(!interval) {
+                    interval = setInterval(onTimer, 100);
+                }
+            }
+            
+            function save() {
+                localStorage.setItem("data", JSON.stringify(data));
+            }
+            
+            function pad(s, n, c) {
+                if(!c) c = '0';
+                s = s.toString();
+                while(s.length < n) {
+                    s = c + s;
+                }
+                return s;
+            }
+            function itemToLi(item) {
+                var el = document.createElement("li");
+                el.innerHTML = new Date(item.time).toLocaleTimeString() + " - " + item.label;
+                return el;
+            }
+             
+            function I(id) {
+                return document.getElementById(id);
+            }
+            
+        </script>
+    </body>
+</html>
